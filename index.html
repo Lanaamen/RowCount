@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Row Counter - A simple tool to keep track of your craft rows." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta title="Row Counter" />
+  <title>Row Counter</title>
+</head>
+<body>
+
+<h1>🧶 Row Counter</h1>
+
+<div id="addForm">
+  <input id="inputName"   type="text"   placeholder="Name (e.g. Sleeve)" />
+  <input id="inputTarget" type="number" placeholder="Target Rows" min="1" style="width:90px" />
+  <button id="btnAdd">Add</button>
+</div>
+
+<div id="counters"></div>
+
+<script>
+
+  function increment(count) {
+    return count + 1;
+  }
+
+  function decrement(count) {
+    if (count <= 0) return 0;
+    return count - 1;
+  }
+
+  function reset() {
+    return 0;
+  }
+
+
+  var counters = [];
+
+
+  function render() {
+    var el = document.getElementById('counters');
+    el.innerHTML = '';
+
+    counters.forEach(function(c, i) {
+
+      var card = document.createElement('div');
+      card.className = 'card';
+
+      card.innerHTML =
+        '<h2>' + c.name + '</h2>' +
+        '<div class="controls">' +
+          '<button data-action="dec" data-idx="' + i + '">−</button>' +
+          '<span class="count">' + c.count + '</span>' +
+          '<button data-action="inc" data-idx="' + i + '">+</button>' +
+        '</div>' +
+        '<div class="card-footer">' +
+        '<button data-action="reset" data-idx="' + i + '">Reset</button>' +
+        '<button data-action="delete" data-idx="' + i + '">Delete</button>' +
+        '</div>';
+
+      el.appendChild(card);
+    });
+  }
+
+  document.getElementById('counters').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-action]');
+    if (!btn) return;
+
+    var idx    = parseInt(btn.dataset.idx, 10);
+    var action = btn.dataset.action;
+
+    if (action === 'inc')    counters[idx].count = increment(counters[idx].count);
+    if (action === 'dec')    counters[idx].count = decrement(counters[idx].count);
+    if (action === 'reset')  counters[idx].count = reset();
+    if (action === 'delete') counters.splice(idx, 1);
+
+    render();
+  });
+
+  document.getElementById('btnAdd').addEventListener('click', function() {
+    var name   = document.getElementById('inputName').value.trim();
+    var target = parseInt(document.getElementById('inputTarget').value, 10) || 0;
+
+    if (!name) return;
+
+    counters.push({ name: name, count: 0, target: target });
+    document.getElementById('inputName').value   = '';
+    document.getElementById('inputTarget').value = '';
+    render();
+  });
+
+  render();
+
+</script>
+</body>
+</html>
