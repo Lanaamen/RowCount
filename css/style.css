@@ -18,7 +18,7 @@ h1 {
   margin-bottom: 16px;
 }
 
-/* ── Formulär ─────────────────────────────────────── */
+/* ── Forms ─────────────────────────────────────── */
 #addForm {
   display: flex;
   gap: 8px;
@@ -97,7 +97,7 @@ h1 {
   font-size: 0.90rem;
 }
 
-/* ── Responsiv design ─────────────────────────────── */
+/* ── Responsive design ─────────────────────────────── */
 /* (>480px) */
 @media (max-width: 480px) {
   body {
