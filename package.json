@@ -1,0 +1,29 @@
+{
+  "name": "sys25d-devops-inl-1-lanaamen",
+  "version": "1.0.0",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/N2U_vT6F)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "vitest",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lanaamen/RowCount.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Lanaamen/RowCount/issues"
+  },
+  "homepage": "https://github.com/Lanaamen/RowCount#readme",
+  "devDependencies": {
+    "vite": "^8.0.3",
+    "vitest": "^4.1.1"
+  }
+}
